@@ -1,0 +1,17 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>ToDo Items</mat-card-title>
+  </mat-card-header>
+  <mat-selection-list #items>
+    <mat-list-option *ngFor="let item of todoListItems">
+      {{ item }}
+    </mat-list-option>
+  </mat-selection-list>
+
+  <mat-divider></mat-divider>
+  <p>
+    Items Completed: {{items.selectedOptions.selected.length}}
+  </p>
+</mat-card>
+
+
