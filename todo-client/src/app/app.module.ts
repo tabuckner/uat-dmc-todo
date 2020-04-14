@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoListItemComponent } from './todo-list-item/todo-list-item.component';
 import { NewTodoComponent } from './new-todo/new-todo.component';
+import { HttpClientModule } from '@angular/common/http';
 
 export const APP_MAT_IMPORTS = [
   MatToolbarModule,
@@ -38,6 +39,7 @@ export const APP_MAT_IMPORTS = [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ...APP_MAT_IMPORTS
   ],
   providers: [],

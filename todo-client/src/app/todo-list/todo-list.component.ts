@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../core/api.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -6,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
-  public todoListItems: Array<string> = ['Buy milk', 'Vacuum', 'Bake a freaking cake bro', 'Eat most of the cake bro'];
+  public todoListItems: Array<string> = [];
 
-  constructor() { }
+  constructor(private api: ApiService) { }
 
   ngOnInit() {
+    this.api.getToDos().subscribe(todoItems => {
+      this.todoListItems = [...todoItems];
+    });
   }
 
 }
