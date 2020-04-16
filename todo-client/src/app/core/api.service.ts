@@ -24,4 +24,9 @@ export class ApiService {
     const url = this.toDosEndpoint;
     return this.http.post(url, { ...nextToDo });
   }
+
+  public removeToDo(id: number): Observable<any> {
+    const url = `${this.toDosEndpoint}/${id}`;
+    return this.http.delete(url);
+  }
 }

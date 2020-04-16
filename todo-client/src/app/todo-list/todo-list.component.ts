@@ -18,6 +18,14 @@ export class TodoListComponent implements OnInit {
     });
   }
 
+  public onDeleteItem(event, id: number) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.api.removeToDo(id).subscribe(() => {
+      this.onReloadList();
+    });
+  }
+
   public onReloadList() {
     this.api.getToDos().subscribe(todoItems => {
       this.todoListItems = [...todoItems];
