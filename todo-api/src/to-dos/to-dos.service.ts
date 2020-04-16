@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Client } from 'pg';
 import { ToDoItemModel } from '../models/todo-item.model';
-import { ToDoItemDto } from '../models/todo-item.dto';
+import { ToDoItemDto } from 'src/models/todo-item.dto';
 
 @Injectable()
 export class ToDosService {

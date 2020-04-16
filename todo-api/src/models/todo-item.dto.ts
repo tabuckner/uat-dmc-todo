@@ -1,3 +1,3 @@
-export interface ToDoItemDto {
+export class ToDoItemDto {
   description: string;
 }
