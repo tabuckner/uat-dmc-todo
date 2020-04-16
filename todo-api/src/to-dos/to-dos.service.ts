@@ -1,10 +1,10 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Client } from 'pg';
-import { ToDoItemModel } from '../../lib/models/todo-item.model'
-import { ToDoItemDto } from '../../lib/models/todo-item.dto';
+import { ToDoItemModel } from '../models/todo-item.model';
+import { ToDoItemDto } from '../models/todo-item.dto';
 
 @Injectable()
-export class AppService {
+export class ToDosService {
 
   constructor(@Inject('DATABASE_CONNECTION') private connectedClient: Client) {}
 

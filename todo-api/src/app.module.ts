@@ -1,17 +1,19 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
+import { ToDosController } from './to-dos/to-dos.controller';
+import { ToDosService } from './to-dos/to-dos.service';
 
 @Module({
   imports: [
     DatabaseModule
   ],
   controllers: [
-    AppController
+    AppController,
+    ToDosController,
   ],
   providers: [
-    AppService
+    ToDosService
   ],
 })
 export class AppModule { }
