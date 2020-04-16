@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendPort: 3000
+  backendPort: 3001
 };
 
 /*
