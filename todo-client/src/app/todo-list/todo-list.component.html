@@ -6,7 +6,7 @@
   <mat-card-content>
     <mat-selection-list #items>
       <mat-list-option *ngFor="let item of todoListItems">
-        {{ item }}
+        {{ item.description }}
       </mat-list-option>
     </mat-selection-list>
 
@@ -14,6 +14,7 @@
       the bottom right of the view.</p>
 
     <ng-container *ngIf="todoListItems?.length > 0">
+      <br>
       <mat-divider></mat-divider>
       <p>
         Items Completed: {{items.selectedOptions.selected.length}}

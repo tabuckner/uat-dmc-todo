@@ -2,3 +2,13 @@
   max-width: 650px;
   margin: auto;
 }
+
+.mat-selection-list {
+  .mat-list-option {
+    &:last-of-type {
+      .mat-list-item-content {
+        margin-bottom: 16px;
+      }
+    }
+  }
+}
