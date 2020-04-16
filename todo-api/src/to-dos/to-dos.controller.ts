@@ -15,7 +15,6 @@ export class ToDosController {
 
   @Post()
   public async createToDo(@Body() nextToDoItem: ToDoItemDto): Promise<any> {
-    console.warn(nextToDoItem)
     return this.toDos.addToDoItem(nextToDoItem);
   }
 

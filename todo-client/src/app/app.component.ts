@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NewTodoComponent } from './new-todo/new-todo.component';
+import { ReloadListService } from './core/reload-list.service';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +10,13 @@ import { NewTodoComponent } from './new-todo/new-todo.component';
 })
 export class AppComponent {
 
-  constructor(private dialogController: MatDialog) {}
+  constructor(private dialogController: MatDialog,
+              private reload: ReloadListService) {}
 
   public onAddItem() {
-    this.dialogController.open(NewTodoComponent);
+    const dialogRef = this.dialogController.open(NewTodoComponent);
+    dialogRef.afterClosed().subscribe(() => {
+      this.reload.trigger();
+    });
   }
 }
