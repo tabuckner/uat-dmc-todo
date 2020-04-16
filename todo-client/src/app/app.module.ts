@@ -17,6 +17,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoListItemComponent } from './todo-list-item/todo-list-item.component';
 import { NewTodoComponent } from './new-todo/new-todo.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export const APP_MAT_IMPORTS = [
   MatToolbarModule,
@@ -40,6 +41,8 @@ export const APP_MAT_IMPORTS = [
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     ...APP_MAT_IMPORTS
   ],
   providers: [],

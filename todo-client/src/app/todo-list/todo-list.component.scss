@@ -1,6 +1,10 @@
 .mat-card {
   max-width: 650px;
   margin: auto;
+
+  .spacer {
+    flex: 1;
+  }
 }
 
 .mat-selection-list {

@@ -18,4 +18,10 @@ export class TodoListComponent implements OnInit {
     });
   }
 
+  public onReloadList() {
+    this.api.getToDos().subscribe(todoItems => {
+      this.todoListItems = [...todoItems];
+    });
+  }
+
 }

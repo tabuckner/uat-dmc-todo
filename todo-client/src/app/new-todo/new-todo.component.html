@@ -3,7 +3,7 @@
   <form class="new-todo__form">
     <mat-form-field class="new-todo__input">
       <mat-label>ToDo Item</mat-label>
-      <input matInput tabindex="-1">
+      <input matInput tabindex="-1" [formControl]="description">
     </mat-form-field>
   </form>
   <div class="new-todo__actions">
