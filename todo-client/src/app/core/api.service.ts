@@ -33,4 +33,9 @@ export class ApiService {
     const url = `${this.toDosEndpoint}/${id}`;
     return this.http.delete(url);
   }
+
+  public updateToDo(nextToDo: ToDoItemModel): Observable<any> {
+    const url = `${this.toDosEndpoint}/${nextToDo.id}`;
+    return this.http.put(url, { ...nextToDo });
+  }
 }

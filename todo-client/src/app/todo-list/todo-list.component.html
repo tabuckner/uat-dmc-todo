@@ -8,12 +8,18 @@
   </mat-card-header>
 
   <mat-card-content>
-    <mat-selection-list #items>
-      <mat-list-option *ngFor="let item of todoListItems">
-        <mat-icon matListIcon (click)="onDeleteItem($event, item.id)">delete</mat-icon>
-        {{ item.description }}
-      </mat-list-option>
-    </mat-selection-list>
+    <mat-list #items>
+      <ng-container *ngFor="let item of todoListItems">
+        <mat-list-item (click)="onSelection(item)">
+          <button mat-icon-button (click)="onDeleteItem($event, item.id)">
+            <mat-icon matListIcon>delete</mat-icon>
+          </button>
+          {{ item.description }}
+          <div class="spacer"></div>
+          <mat-checkbox [checked]="item.is_completed"></mat-checkbox>
+        </mat-list-item>
+      </ng-container>
+    </mat-list>
 
     <p *ngIf="todoListItems?.length < 1">No ToDo list items were found. Please try adding some using the green button in
       the bottom right of the view.</p>
@@ -22,7 +28,7 @@
       <br>
       <mat-divider></mat-divider>
       <p>
-        Items Completed: {{items.selectedOptions.selected.length}}
+        Items Completed: {{ completedItems }}
       </p>
     </ng-container>
   </mat-card-content>

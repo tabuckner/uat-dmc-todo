@@ -10,6 +10,7 @@ import { ReloadListService } from '../core/reload-list.service';
 })
 export class TodoListComponent implements OnInit {
   public todoListItems: Array<ToDoItemModel> = [];
+  public completedItems = 0;
 
   constructor(private api: ApiService,
               private reload: ReloadListService) { }
@@ -17,6 +18,7 @@ export class TodoListComponent implements OnInit {
   ngOnInit() {
     this.api.getToDos().subscribe(todoItems => {
       this.todoListItems = [...todoItems];
+      this.completedItems = this.todoListItems.filter(item => item.is_completed).length;
     });
     this.reload.reload$.subscribe(() => {
       this.onReloadList();
@@ -34,7 +36,20 @@ export class TodoListComponent implements OnInit {
   public onReloadList() {
     this.api.getToDos().subscribe(todoItems => {
       this.todoListItems = [...todoItems];
+      this.completedItems = this.todoListItems.filter(item => item.is_completed).length;
     });
   }
+
+  public onSelection(toDoItem: ToDoItemModel) {
+    const nextToDo: ToDoItemModel = {
+      ...toDoItem
+    };
+    nextToDo.is_completed = !toDoItem.is_completed;
+    this.api.updateToDo(nextToDo).subscribe(() => {
+      this.onReloadList();
+    });
+  }
+
+
 
 }

@@ -6,7 +6,7 @@ import { ToDoItemDto } from 'src/models/todo-item.dto';
 @Injectable()
 export class ToDosService {
 
-  constructor(@Inject('DATABASE_CONNECTION') private connectedClient: Client) {}
+  constructor(@Inject('DATABASE_CONNECTION') private connectedClient: Client) { }
 
   public async getToDoItems(): Promise<Array<ToDoItemModel>> {
     const query = 'SELECT * FROM app_schema.todo_items';
@@ -21,13 +21,14 @@ export class ToDosService {
   }
 
   public async addToDoItem(newToDoItem: ToDoItemDto): Promise<void> {
-    const query = 'INSERT INTO app_schema.todo_items (description) VALUES ($1)';
-    await this.connectedClient.query(query, [newToDoItem.description]);
+    const query = 'INSERT INTO app_schema.todo_items (description, is_completed) VALUES ($1, $2)';
+    await this.connectedClient.query(query, [newToDoItem.description, newToDoItem.is_completed || false]);
   }
 
   public async updateToDoItem(id: number, nextToDoItem: ToDoItemDto): Promise<void> {
-    const query = 'UPDATE app_schema.todo_items SET description = $2 WHERE id = $1';
-    await this.connectedClient.query(query, [id, nextToDoItem.description]);
+    console.warn(nextToDoItem);
+    const query = 'UPDATE app_schema.todo_items SET description = $2, is_completed = $3 WHERE id = $1';
+    await this.connectedClient.query(query, [id, nextToDoItem.description, nextToDoItem.is_completed || false]);
   }
 
   public async removeToDoItem(id: number): Promise<void> {

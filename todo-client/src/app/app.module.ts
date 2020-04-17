@@ -12,6 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRippleModule } from '@angular/material/core';
 
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoListItemComponent } from './todo-list-item/todo-list-item.component';
@@ -26,7 +28,9 @@ export const APP_MAT_IMPORTS = [
   MatIconModule,
   MatButtonModule,
   MatDialogModule,
-  MatInputModule
+  MatInputModule,
+  MatCheckboxModule,
+  MatRippleModule
 ];
 
 @NgModule({
