@@ -9,7 +9,7 @@ export class ToDosService {
   constructor(@Inject('DATABASE_CONNECTION') private connectedClient: Client) { }
 
   public async getToDoItems(): Promise<Array<ToDoItemModel>> {
-    const query = 'SELECT * FROM app_schema.todo_items';
+    const query = 'SELECT * FROM app_schema.todo_items ORDER BY id ASC';
     const result = await this.connectedClient.query(query);
     return result.rows;
   }
@@ -26,7 +26,6 @@ export class ToDosService {
   }
 
   public async updateToDoItem(id: number, nextToDoItem: ToDoItemDto): Promise<void> {
-    console.warn(nextToDoItem);
     const query = 'UPDATE app_schema.todo_items SET description = $2, is_completed = $3 WHERE id = $1';
     await this.connectedClient.query(query, [id, nextToDoItem.description, nextToDoItem.is_completed || false]);
   }
