@@ -9,7 +9,7 @@ export class ToDosService {
   constructor(@Inject('DATABASE_CONNECTION') private connectedClient: Client) {}
 
   public async getToDoItems(): Promise<Array<ToDoItemModel>> {
-    const query = 'SELECT * FROM app_schema.todo_items';
+    const query = 'SELECT * FROM app_schema.todo_items ORDER BY id ASC';
     const result = await this.connectedClient.query(query);
     return result.rows;
   }
